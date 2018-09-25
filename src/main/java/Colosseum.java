@@ -15,6 +15,7 @@ public class Colosseum {
      */
     static final int MAX_HIT_POINTS = 50;
 
+
     /**
      * The maximum number of rounds we will let the Pokemon battle.
      */
@@ -43,7 +44,7 @@ public class Colosseum {
      * <p>
      * Requirements we should check the user for: <br>
      * - Hit points are between 1 and MAX_HIT_POINTS <br>
-     * - No more than 50 points are split between attack level and defense leve <br>
+     * - No more than 50 points are split between attack level and defense level <br>
      * - Attack level and defense level must have at least 1 point each <br>
      * Example of how this will look to the user:
      * <p>
@@ -73,6 +74,27 @@ public class Colosseum {
      */
     public static Pokemon buildPokemon() {
         Pokemon tempPokemon = new Pokemon();
+        Scanner input = new Scanner(System.in);
+        Scanner nameInput = new Scanner(System.in);
+        System.out.print("Please enter hit points: ");
+        int hitPoints = input.nextInt();
+        if (hitPoints < 1 || hitPoints > MAX_HIT_POINTS) {
+            System.out.println("Sorry. Hit points must be between 1 and 50: ");
+            hitPoints = input.nextInt();
+        }
+        System.out.println("Please enter attack level: ");
+        int attackLevel = input.nextInt();
+        if (attackLevel > MAX_HIT_POINTS - 1 || attackLevel < 1) {
+            System.out.println("Sorry. Hit points must be between 1 and 50: ");
+            attackLevel = input.nextInt();
+        }
+        System.out.println("Please enter defense level: ");
+        int defenseLevel = input.nextInt();
+        if (defenseLevel != MAX_HIT_POINTS - attackLevel) {
+            System.out.println("Sorry, defense level and attack level should add up to be 50: ");
+            defenseLevel = input.nextInt();
+        }
+        String name = nameInput.nextLine();
         return tempPokemon;
     }
 
